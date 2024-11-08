@@ -1,0 +1,73 @@
+* g:\23_hathakon_2022\esim_workshpace2024\counter_jk_3nov\counter_jk_3nov.cir
+
+* u5  net-_u3-pad2_ net-_u3-pad2_ clock net-_u10-pad4_ net-_u10-pad5_ net-_u16-pad1_ net-_u10-pad3_ d_jkff
+* u10  net-_u10-pad1_ net-_u10-pad1_ net-_u10-pad3_ net-_u10-pad4_ net-_u10-pad5_ net-_u10-pad6_ net-_u10-pad7_ d_jkff
+v1  net-_u1-pad1_ gnd pulse(0 5 0 0 0 20m 40m)
+* u1  net-_u1-pad1_ clock adc_bridge_1
+* u3  net-_u3-pad1_ net-_u3-pad2_ adc_bridge_1
+* u7  net-_u16-pad1_ b0 dac_bridge_1
+* u6  net-_u10-pad3_ net-_r1-pad1_ dac_bridge_1
+* u11  net-_u10-pad6_ b1 dac_bridge_1
+* u12  net-_u10-pad7_ net-_r3-pad1_ dac_bridge_1
+r2  b0 gnd 1k
+r4  b1 gnd 1k
+r1  net-_r1-pad1_ gnd 1k
+r3  net-_r3-pad1_ gnd 1k
+* u2  clock plot_v1
+* u9  b0 plot_v1
+* u14  b1 plot_v1
+v3 net-_u15-pad1_ gnd  dc 5
+* u15  net-_u15-pad1_ net-_u10-pad1_ adc_bridge_1
+* u16  net-_u16-pad1_ net-_u10-pad6_ net-_u16-pad3_ d_xor
+* u17  net-_u16-pad3_ g0 dac_bridge_1
+r5  g0 gnd 1k
+* u18  g0 plot_v1
+* u4  b1 plot_v1
+v2 net-_u3-pad1_ gnd  dc 5
+a1 net-_u3-pad2_ net-_u3-pad2_ clock net-_u10-pad4_ net-_u10-pad5_ net-_u16-pad1_ net-_u10-pad3_ u5
+a2 net-_u10-pad1_ net-_u10-pad1_ net-_u10-pad3_ net-_u10-pad4_ net-_u10-pad5_ net-_u10-pad6_ net-_u10-pad7_ u10
+a3 [net-_u1-pad1_ ] [clock ] u1
+a4 [net-_u3-pad1_ ] [net-_u3-pad2_ ] u3
+a5 [net-_u16-pad1_ ] [b0 ] u7
+a6 [net-_u10-pad3_ ] [net-_r1-pad1_ ] u6
+a7 [net-_u10-pad6_ ] [b1 ] u11
+a8 [net-_u10-pad7_ ] [net-_r3-pad1_ ] u12
+a9 [net-_u15-pad1_ ] [net-_u10-pad1_ ] u15
+a10 [net-_u16-pad1_ net-_u10-pad6_ ] net-_u16-pad3_ u16
+a11 [net-_u16-pad3_ ] [g0 ] u17
+* Schematic Name:                             d_jkff, NgSpice Name: d_jkff
+.model u5 d_jkff(clk_delay=1.0e-9 set_delay=1.0e-9 reset_delay=1.0 ic=0 jk_load=1.0e-12 clk_load=1.0e-12 set_load=1.0e-12 reset_load=1.0e-12 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             d_jkff, NgSpice Name: d_jkff
+.model u10 d_jkff(clk_delay=1.0e-9 set_delay=1.0e-9 reset_delay=1.0 ic=0 jk_load=1.0e-12 clk_load=1.0e-12 set_load=1.0e-12 reset_load=1.0e-12 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             adc_bridge_1, NgSpice Name: adc_bridge
+.model u1 adc_bridge(in_low=1.0 in_high=2.0 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             adc_bridge_1, NgSpice Name: adc_bridge
+.model u3 adc_bridge(in_low=1.0 in_high=2.0 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             dac_bridge_1, NgSpice Name: dac_bridge
+.model u7 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             dac_bridge_1, NgSpice Name: dac_bridge
+.model u6 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             dac_bridge_1, NgSpice Name: dac_bridge
+.model u11 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             dac_bridge_1, NgSpice Name: dac_bridge
+.model u12 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+* Schematic Name:                             adc_bridge_1, NgSpice Name: adc_bridge
+.model u15 adc_bridge(in_low=1.0 in_high=2.0 rise_delay=1.0e-9 fall_delay=1.0e-9 ) 
+* Schematic Name:                             d_xor, NgSpice Name: d_xor
+.model u16 d_xor(rise_delay=1.0e-9 fall_delay=1.0e-9 input_load=1.0e-12 ) 
+* Schematic Name:                             dac_bridge_1, NgSpice Name: dac_bridge
+.model u17 dac_bridge(out_low=0.0 out_high=5.0 out_undef=0.5 input_load=1.0e-12 t_rise=1.0e-9 t_fall=1.0e-9 ) 
+.tran 1e-03 500e-03 0e-03
+
+* Control Statements 
+.control
+run
+print allv > plot_data_v.txt
+print alli > plot_data_i.txt
+plot v(clock)
+plot v(b0)
+plot v(b1)
+plot v(g0)
+plot v(b1)
+.endc
+.end
